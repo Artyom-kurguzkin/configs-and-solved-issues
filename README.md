@@ -1,2 +1,2 @@
 # linux_configs
-my linux configs
+my linux suffering is documented here
