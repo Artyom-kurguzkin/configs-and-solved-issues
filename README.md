@@ -1,2 +1,3 @@
-# linux_configs
-my linux suffering is documented here
+# Configs and sovled issues
+
+my sufferings documented here
