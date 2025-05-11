@@ -27,3 +27,13 @@ Next, create a shortcut for the script. press Winkey and type `Run`.
 In runner, type `shell:startup`. 
 
 A new file explorer window opens. Put the shortcut there, so the script runs on your computer's startup. 
+
+---
+
+<br>
+
+I also added the following later:
+
+```
+<!x::Send("{Esc}")    ; Alt + X sends the Escape key
+```
