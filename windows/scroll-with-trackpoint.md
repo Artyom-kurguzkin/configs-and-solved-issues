@@ -63,3 +63,35 @@ WatchMouse() {
     }
 }
 ```
+
+---
+
+<br>
+
+# Alternative
+
+Another way I found is to scroll using keyboard:
+
+
+```
+; Scroll configuration
+scrollSteps := 3     ; Number of scroll steps per key press
+scrollDelay := 10    ; Delay between scroll steps (in milliseconds)
+
+; Vertical scrolling
+!j::Scroll("Down")   ; Alt + j scrolls down
+!k::Scroll("Up")     ; Alt + k scrolls up
+
+; Horizontal scrolling
+!h::Scroll("Left")   ; Alt + h scrolls left
+!l::Scroll("Right")  ; Alt + l scrolls right
+
+Scroll(direction) {
+    global scrollSteps, scrollDelay
+    Loop scrollSteps {
+        Send("{Wheel" direction "}")
+        Sleep(scrollDelay)
+    }
+}
+```
+
