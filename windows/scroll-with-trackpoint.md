@@ -95,3 +95,49 @@ Scroll(direction) {
 }
 ```
 
+---
+
+<br>
+
+# Alternative 2
+
+If you don't have a trackpad or trackpoint, you could also imitate mouse movement using keybard like so:
+
+```
+; Scroll with keyboard and move mouse
+
+scrollSteps := 3
+scrollDelay := 10
+moveAmount := 50
+
+; Scroll hotkeys
+<!j::Scroll("Down")
+<!k::Scroll("Up")
+<!h::Scroll("Left")
+<!l::Scroll("Right")
+
+; Mouse movement hotkeys
+<!u::MoveMouse(-moveAmount, 0)      ; Alt + u moves mouse left
+<!i::MoveMouse(0, moveAmount)       ; Alt + i moves mouse down
+<!o::MoveMouse(0, -moveAmount)      ; Alt + o moves mouse up
+<!p::MoveMouse(moveAmount, 0)       ; Alt + p moves mouse right
+
+Scroll(direction) {
+    global scrollSteps, scrollDelay
+    Loop scrollSteps {
+        Send("{Wheel" direction "}")
+        Sleep(scrollDelay)
+    }
+}
+
+MoveMouse(xDelta, yDelta) {
+    ; Release the Alt key to prevent Windows from hiding the cursor
+    Send("{Alt up}")
+    MouseGetPos(&x, &y)
+    MouseMove(x + xDelta, y + yDelta, 0)
+}
+
+```
+
+
+
