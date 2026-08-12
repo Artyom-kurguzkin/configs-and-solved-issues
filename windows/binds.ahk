@@ -12,9 +12,27 @@
 
 
 ; escape
-<!x::Send("{Esc}")          ; Left Alt + X = Escape key
+<!x:: {
+    SendLevel 1
+    SendEvent("{Esc}")
+}
 
 
+
+; Line navigation
+!]::Send("{End}")        ; Alt+]        -> jump to end of line
+![::Send("{Home}")       ; Alt+[        -> jump to start of line
++!]::Send("+{End}")      ; Shift+Alt+]  -> select to end of line
++![::Send("+{Home}")     ; Shift+Alt+[  -> select to start of line
+
+; Alt+O: go to end of line, open a new line below, cursor at its start.
+; Uses Shift+Enter instead of Enter so chat/textarea apps insert a newline
+; instead of submitting the message.
+InsertLineBelow() {
+    Send("{End}{Shift down}{Enter}{Shift up}")
+}
+!o::InsertLineBelow()    ; Alt+O
++!o::InsertLineBelow()   ; Shift+Alt+O (same behavior)
 
 
 ; Remap PgUp / PgDn to Win + Ctrl + Right / Left
@@ -117,4 +135,3 @@ CenterMouseOnWindow(hwnd) {
         DllCall("SetCursorPos", "Int", cx, "Int", cy)
     }
 }
-
